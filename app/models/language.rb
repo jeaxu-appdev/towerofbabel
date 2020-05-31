@@ -9,4 +9,5 @@
 #  updated_at :datetime         not null
 #
 class Language < ApplicationRecord
+  validates :code, :uniqueness => true
 end
