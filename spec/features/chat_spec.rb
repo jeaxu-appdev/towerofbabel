@@ -30,7 +30,7 @@ describe "Chat feature" do
       @current_chat_url = current_url
     end
 
-    scenario "when user creates a chat with valid data" do
+    scenario "when user creates a chat with valid data", points: 2 do
       # page should have a sharable link
       expect(page).to have_content URI.parse(current_url)
 
@@ -52,7 +52,7 @@ describe "Chat feature" do
      end
 
 
-    scenario "when guest visits a chat link" do
+    scenario "when guest visits a chat link", points: 4 do
       Capybara.reset_sessions!
       visit @current_chat_url
 
@@ -69,7 +69,7 @@ describe "Chat feature" do
       expect(page).to have_content(/Per la Basilica di San Clemente, per favore/)
     end
 
-    context "Guest sends a message to user" do
+    context "Guest sends a message to user", points: 4 do
       before(:all) do
         visit @current_chat_url
         fill_in "Your message", with: "È quello vicino al Colosseo?"
