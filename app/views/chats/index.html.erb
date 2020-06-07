@@ -1,0 +1,134 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all chats
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new chat
+    </h2>
+
+    <form action="/insert_chat" method="post">
+      <div class="form-group">
+        <label for="default_guest_language_id_box">
+          Default guest language
+        </label>
+
+        <input type="text" id="default_guest_language_id_box" name="query_default_guest_language_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="random_id_box">
+          Random
+        </label>
+
+        <input type="text" id="random_id_box" name="query_random_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create chat
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Default guest language
+        </th>
+
+        <th>
+          Random
+        </th>
+
+        <th>
+          Title
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @chats.each do |chat| %>
+      <tr>
+        <td>
+          <%= chat.id %>
+        </td>
+
+        <td>
+          <%= chat.default_guest_language_id %>
+        </td>
+
+        <td>
+          <%= chat.random_id %>
+        </td>
+
+        <td>
+          <%= chat.title %>
+        </td>
+
+        <td>
+          <%= chat.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(chat.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(chat.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/chats/<%= chat.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

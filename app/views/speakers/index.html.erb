@@ -1,0 +1,150 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all speakers
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new speaker
+    </h2>
+
+    <form action="/insert_speaker" method="post">
+      <div class="form-group">
+        <label for="chat_id_box">
+          Chat
+        </label>
+
+        <input type="text" id="chat_id_box" name="query_chat_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="language_id_box">
+          Language
+        </label>
+
+        <input type="text" id="language_id_box" name="query_language_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="speaker_id_box">
+          Speaker
+        </label>
+
+        <input type="text" id="speaker_id_box" name="query_speaker_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create speaker
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Chat
+        </th>
+
+        <th>
+          Language
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Speaker
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @speakers.each do |speaker| %>
+      <tr>
+        <td>
+          <%= speaker.id %>
+        </td>
+
+        <td>
+          <%= speaker.chat_id %>
+        </td>
+
+        <td>
+          <%= speaker.language_id %>
+        </td>
+
+        <td>
+          <%= speaker.name %>
+        </td>
+
+        <td>
+          <%= speaker.speaker_id %>
+        </td>
+
+        <td>
+          <%= speaker.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(speaker.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(speaker.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/speakers/<%= speaker.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

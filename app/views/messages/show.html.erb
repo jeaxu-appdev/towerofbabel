@@ -1,0 +1,101 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Message #<%= @message.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/messages" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_message/<%= @message.id %>" class="btn btn-block btn-outline-secondary">
+          Delete message
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Body
+      </dt>
+      <dd>
+        <%= @message.body %>
+      </dd>
+
+      <dt>
+        Chat
+      </dt>
+      <dd>
+        <%= @message.chat_id %>
+      </dd>
+
+      <dt>
+        Speaker
+      </dt>
+      <dd>
+        <%= @message.speaker_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@message.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@message.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit message
+    </h2>
+
+    <form action="/modify_message/<%= @message.id %>"  method="post" >
+      <div class="form-group">
+        <label for="body_box">
+          Body
+        </label>
+
+        <textarea id="body_box" name="query_body" class="form-control" rows="3"><%= @message.body %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="chat_id_box">
+          Chat
+        </label>
+
+        <input type="text" id="chat_id_box" name="query_chat_id" class="form-control" value="<%= @message.chat_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="speaker_id_box">
+          Speaker
+        </label>
+
+        <input type="text" id="speaker_id_box" name="query_speaker_id" class="form-control" value="<%= @message.speaker_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update message
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -10,12 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_211234) do
+ActiveRecord::Schema.define(version: 2020_06_07_020344) do
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "default_guest_language_id"
+    t.integer "random_id"
+    t.string "title"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "languages", force: :cascade do |t|
     t.string "name"
     t.string "code"
     t.string "name_in_english"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.integer "chat_id"
+    t.integer "speaker_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "speakers", force: :cascade do |t|
+    t.integer "chat_id"
+    t.integer "language_id"
+    t.string "name"
+    t.integer "speaker_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "translations", force: :cascade do |t|
+    t.text "body"
+    t.integer "language_id"
+    t.integer "message_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "default_guest_language_id"
+    t.string "email"
+    t.string "name"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,131 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Speaker #<%= @speaker.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/speakers" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_speaker/<%= @speaker.id %>" class="btn btn-block btn-outline-secondary">
+          Delete speaker
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Chat
+      </dt>
+      <dd>
+        <%= @speaker.chat_id %>
+      </dd>
+
+      <dt>
+        Language
+      </dt>
+      <dd>
+        <%= @speaker.language_id %>
+      </dd>
+
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @speaker.name %>
+      </dd>
+
+      <dt>
+        Speaker
+      </dt>
+      <dd>
+        <%= @speaker.speaker_id %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @speaker.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@speaker.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@speaker.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit speaker
+    </h2>
+
+    <form action="/modify_speaker/<%= @speaker.id %>"  method="post" >
+      <div class="form-group">
+        <label for="chat_id_box">
+          Chat
+        </label>
+
+        <input type="text" id="chat_id_box" name="query_chat_id" class="form-control" value="<%= @speaker.chat_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="language_id_box">
+          Language
+        </label>
+
+        <input type="text" id="language_id_box" name="query_language_id" class="form-control" value="<%= @speaker.language_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" class="form-control" value="<%= @speaker.name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="speaker_id_box">
+          Speaker
+        </label>
+
+        <input type="text" id="speaker_id_box" name="query_speaker_id" class="form-control" value="<%= @speaker.speaker_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" class="form-control" value="<%= @speaker.user_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update speaker
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

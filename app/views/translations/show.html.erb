@@ -1,0 +1,101 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Translation #<%= @translation.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/translations" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_translation/<%= @translation.id %>" class="btn btn-block btn-outline-secondary">
+          Delete translation
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Body
+      </dt>
+      <dd>
+        <%= @translation.body %>
+      </dd>
+
+      <dt>
+        Language
+      </dt>
+      <dd>
+        <%= @translation.language_id %>
+      </dd>
+
+      <dt>
+        Message
+      </dt>
+      <dd>
+        <%= @translation.message_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@translation.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@translation.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit translation
+    </h2>
+
+    <form action="/modify_translation/<%= @translation.id %>"  method="post" >
+      <div class="form-group">
+        <label for="body_box">
+          Body
+        </label>
+
+        <textarea id="body_box" name="query_body" class="form-control" rows="3"><%= @translation.body %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="language_id_box">
+          Language
+        </label>
+
+        <input type="text" id="language_id_box" name="query_language_id" class="form-control" value="<%= @translation.language_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="message_id_box">
+          Message
+        </label>
+
+        <input type="text" id="message_id_box" name="query_message_id" class="form-control" value="<%= @translation.message_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update translation
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

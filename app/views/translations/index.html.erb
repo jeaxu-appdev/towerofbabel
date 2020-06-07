@@ -1,0 +1,118 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all translations
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new translation
+    </h2>
+
+    <form action="/insert_translation" method="post">
+      <div class="form-group">
+        <label for="body_box">
+          Body
+        </label>
+
+        <textarea id="body_box" name="query_body" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="language_id_box">
+          Language
+        </label>
+
+        <input type="text" id="language_id_box" name="query_language_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="message_id_box">
+          Message
+        </label>
+
+        <input type="text" id="message_id_box" name="query_message_id" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create translation
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Body
+        </th>
+
+        <th>
+          Language
+        </th>
+
+        <th>
+          Message
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @translations.each do |translation| %>
+      <tr>
+        <td>
+          <%= translation.id %>
+        </td>
+
+        <td>
+          <%= translation.body %>
+        </td>
+
+        <td>
+          <%= translation.language_id %>
+        </td>
+
+        <td>
+          <%= translation.message_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(translation.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(translation.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/translations/<%= translation.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
